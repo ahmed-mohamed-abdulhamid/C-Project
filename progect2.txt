@@ -1,0 +1,133 @@
+#include <iostream>
+using namespace std;
+struct seats {
+	int id;
+	bool s;//false is not reserved.....available ????
+};
+struct cars {
+	int id;
+	seats sea[30];       //sea mean array of seats.
+};
+struct train {
+	cars ca[10];
+};
+int main()
+{
+	int n, count, count2, x = 0;
+	bool c;
+	int seatnum, carnum;
+	train t;
+	for (int i = 0; i < 10; i++)
+	{for (int j = 0; j < 30; j++)
+			t.ca[i].sea[j].s = true;
+}
+	do
+	{
+		cout << "choose the number of list (1:7) " << endl;
+
+		cin >> n;
+		
+		switch (n)
+		{
+		case 1: {
+			cout << "enter the number of chair and car" << endl;
+			cin >> seatnum >> carnum;
+			if (t.ca[carnum].sea[seatnum].s == true)
+			{
+				t.ca[carnum].sea[seatnum].s = false;
+				//??? ????? 
+			}
+			else
+				cout << "this chair is already reserve" << endl;
+			break;
+		}
+		case 2: {
+			cout << "please enter the number of car and the number of seat" << endl;
+			cin >> carnum >> seatnum;
+			if (t.ca[carnum].sea[seatnum].s == false)
+				t.ca[carnum].sea[seatnum].s = true;
+			// ??? ?????
+			else
+				cout << "this chair is not reserve " << endl;
+			break;
+		}
+		case 3: {
+			c = 0;
+			cin >> carnum;
+			for (int i = 0; i < 30; i++)
+			{
+				if (t.ca[carnum].sea[i].s == true)
+				{
+					c = 1;
+					break;
+				}
+			}
+			if (c == 0)
+				cout << "There is no available seats" << endl;
+			else
+				cout << "available chair" << endl;
+
+			break;
+		}
+		case 4:
+		{
+			cout << "please enter the number of car and the number of seat" << endl;
+
+			cin >> carnum;
+			cin >> seatnum;
+			if (t.ca[carnum].sea[seatnum].s == true)
+			{
+				cout << "available seat" << endl;
+			}
+			else
+			{
+				cout << "not available seat" << endl;
+			}
+			break;
+		}
+		case 5:
+		{
+			count = 0;
+			cout << "enter the number of car" << endl;
+			cin >> carnum;
+			for (int i = 0; i < 30; i++)
+			{
+				if (t.ca[carnum].sea[i].s == true)
+				{
+					count++;
+				}
+			}
+			cout << "the number of avilable seat is :" << count << endl;
+			break;
+		}
+		case 6:
+		{
+			cout << "enter the number of car" << endl;
+			cin >> carnum;
+			for (int i = 0; i < 30; i++)
+			{
+				cout << "the seat number is " << i + 1;
+				if (t.ca[carnum].sea[i].s == true)
+				{
+					cout << "THe seat is available" << endl;
+				}
+				else
+				{
+					cout << "THe seat is not available" << endl;
+
+				}
+			}
+			break;
+		}
+		case 7:
+		{cout << "Thank u";
+		return 0;
+		break;
+		}
+
+
+		}
+	}while (x == 0);
+	system("pause");
+	return 0;
+}
